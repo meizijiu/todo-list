@@ -2,7 +2,7 @@
   "name": "todo-list",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "server": "cross-env NODE_ENV=production node server",
     "start": "cross-env NODE_ENV=development node server"

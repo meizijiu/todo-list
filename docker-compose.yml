@@ -1,0 +1,38 @@
+version: "3"
+services: 
+  mysql: # mysql
+    build: ./mysql
+    image: srect/todolist_mysql:latest
+    container_name: todolist_mysql_server
+    restart: always
+    # MYSQL_ROOT_PASSWORD: "123456"
+
+  node: # nodejs服务
+    depends_on:
+      - 'mysql'
+    build: . # Dockerfile所在目录构建
+    image: srect/koa:latest
+    container_name: koa_server
+    # ports:
+    #   - "8001:4000"
+    restart: always # 自动重启
+    environment: 
+      - NODE_ENV=production
+    command: npm run server # 覆盖容器启动后默认执行的命令
+
+  vue:
+    depends_on: # vue 容器会保证在 node容器之后启动
+      - 'node'
+    build: ./web
+    image: srect/vite_vue3_pinia:latest
+    container_name: vite_vue3_pinia
+    restart: always
+    environment: 
+      - NODE_ENV=production
+    ports:
+      - "8001:80"
+
+networks:
+  default:
+    external:
+      name: vue-koa

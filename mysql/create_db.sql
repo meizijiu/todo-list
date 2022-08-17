@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS todolist;
+
+-- 打印数据库
+SHOW DATABASES;
