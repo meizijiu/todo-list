@@ -2,7 +2,7 @@ const path = require('path')
 const { Sequelize } = require('sequelize')
 const { logger, mysqlLogger } = require(path.resolve(__dirname, '../util/logger'))
 
-const db = new Sequelize('todolist', 'root', '123456', {
+const db = new Sequelize('todolist', 'root', 'Abc123123#', {
   dialect: 'mysql',
   dialectOptions: {
     charset: 'utf8mb4',

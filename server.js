@@ -6,7 +6,7 @@ const bodyParser = require('koa-bodyparser')
 const koalogger = require('koa-logger')
 const ROOT = path.resolve(process.cwd(), './')
 const { accessLogger, logger } = require(path.resolve(ROOT, './util/logger'))
-const { connectMySQL } = require(path.resolve(ROOT), './util/db')
+const { connectMySQL } = require(path.resolve(ROOT, './util/db'))
 const { handleGlobalError, logClientDevices } = require(path.resolve(ROOT, './middleware'))
 
 const index = require(path.resolve(ROOT, './routes/index'))
