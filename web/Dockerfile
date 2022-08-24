@@ -1,4 +1,4 @@
-FROM alpine:3.15 AS base
+FROM alpine:latest AS base
 ENV NODE_ENV=production \
   APP_PATH=/app
 WORKDIR $APP_PATH
