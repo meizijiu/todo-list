@@ -1,9 +1,17 @@
 FROM alpine:latest AS base
+
 ENV NODE_ENV=production \
   APP_PATH=/app
+
 WORKDIR $APP_PATH
-# 使用apk命令安装 nodejs 和 yarn
-RUN apk add --no-cache --update nodejs=17.9.0-r0 yarn
+
+# 使用apk命令安装 nodejs 
+RUN echo "http://mirrors.aliyun.com/alpine/edge/main/" > /etc/apk/repositories \
+  && echo "http://mirrors.aliyun.com/alpine/edge/community/" >> /etc/apk/repositories \
+  && apk update \
+  && apk add --no-cache --update nodejs-current npm \
+  && node -v && npm -v \
+  && npm config set registry https://registry.npm.taobao.org
 
 FROM base AS install
 COPY package.json yarn.lock $APP_PATH/
