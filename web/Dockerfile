@@ -11,7 +11,7 @@ RUN echo "http://mirrors.aliyun.com/alpine/edge/main/" > /etc/apk/repositories \
   && apk update \
   && apk add --no-cache --update nodejs-current yarn \
   && node -v && yarn -v \
-  && npm config set registry https://registry.npm.taobao.org
+  && yarn config set registry https://registry.npm.taobao.org
 
 FROM base AS install
 COPY package.json yarn.lock $APP_PATH/
