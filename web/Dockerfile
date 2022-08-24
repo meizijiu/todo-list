@@ -9,8 +9,8 @@ WORKDIR $APP_PATH
 RUN echo "http://mirrors.aliyun.com/alpine/edge/main/" > /etc/apk/repositories \
   && echo "http://mirrors.aliyun.com/alpine/edge/community/" >> /etc/apk/repositories \
   && apk update \
-  && apk add --no-cache --update nodejs-current npm \
-  && node -v && npm -v \
+  && apk add --no-cache --update nodejs-current yarn \
+  && node -v && yarn -v \
   && npm config set registry https://registry.npm.taobao.org
 
 FROM base AS install
