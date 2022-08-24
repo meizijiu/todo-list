@@ -1,9 +1,9 @@
 FROM alpine:3.15 AS base
 ENV NODE_ENV=production \
-    APP_PATH=/app
+  APP_PATH=/app
 WORKDIR $APP_PATH
-# 使用apk命令安装node和yarn
-RUN apk add --no-cache --update nodejs=16.13.2-r0 yarn
+# 使用apk命令安装 nodejs 和 yarn
+RUN apk add --no-cache --update nodejs=17.9.0-r0 yarn
 
 FROM base AS install
 COPY package.json yarn.lock $APP_PATH/
