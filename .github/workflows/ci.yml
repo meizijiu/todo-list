@@ -4,7 +4,7 @@ name: MySQL + Koa2 Server + Vue3 todolist
 
 on:
   push:
-    branches: [main] # 监听main分支
+    branches: [master] # 监听main分支
 
 jobs:
   build:
