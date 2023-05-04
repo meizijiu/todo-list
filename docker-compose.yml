@@ -2,19 +2,18 @@ version: "3"
 services: 
   mysql: # mysql
     build: ./mysql
-    image: srect/todolist_mysql:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mzwine_sh/todolist_mysql:latest
     container_name: todolist_mysql_server
     restart: always
-    # MYSQL_ROOT_PASSWORD: "123456"
 
   node: # nodejs服务
     depends_on:
       - 'mysql'
     build: . # Dockerfile所在目录构建
-    image: srect/koa:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mzwine_sh/koa:latest
     container_name: koa_server
-    # ports:
-    #   - "8001:4000"
+    ports:
+      - "8001:4000"
     restart: always # 自动重启
     environment: 
       - NODE_ENV=production
@@ -24,7 +23,7 @@ services:
     depends_on: # vue 容器会保证在 node容器之后启动
       - 'node'
     build: ./web
-    image: srect/vite_vue3_pinia:latest
+    image: registry.cn-hangzhou.aliyuncs.com/mzwine_sh/vite_vue3_pinia:latest
     container_name: vite_vue3_pinia
     restart: always
     environment: 
@@ -35,4 +34,4 @@ services:
 networks:
   default:
     external:
-      name: vue-koa
+      name: vue3-koa

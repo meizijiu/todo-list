@@ -1,12 +1,17 @@
-FROM alpine:3.15 AS base
+FROM alpine:latest AS base
 
 ENV NODE_ENV=production \
-    APP_PATH=/www/node-server
+  APP_PATH=/www/node-server
 
 WORKDIR $APP_PATH
 
 # 使用apk命令安装 nodejs 
-RUN apk add --no-cache --update nodejs=16.13.2-r0 npm
+RUN echo "http://mirrors.aliyun.com/alpine/edge/main/" > /etc/apk/repositories \
+  && echo "http://mirrors.aliyun.com/alpine/edge/community/" >> /etc/apk/repositories \
+  && apk update \
+  && apk add --no-cache --update nodejs-current npm \
+  && node -v && npm -v \
+  && npm config set registry https://registry.npm.taobao.org
 
 # 基于基础镜像安装项目依赖
 FROM base AS install
