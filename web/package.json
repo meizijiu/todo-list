@@ -9,16 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.1",
+    "@vitejs/plugin-vue": "^2.0.0",
     "element-plus": "^1.3.0-beta.9",
     "lodash": "^4.17.21",
     "pinia": "^2.0.6",
-    "vue": "^3.2.25",
-    "@vitejs/plugin-vue": "^2.0.0",
     "unplugin-auto-import": "^0.5.11",
     "unplugin-vue-components": "^0.17.14",
-    "vite": "^2.7.13"
+    "vite": "^2.7.13",
+    "vue": "^3.2.25"
   },
-  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
